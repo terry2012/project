@@ -1,0 +1,167 @@
+Test Run By qingjinlyc on Fri Dec 20 19:30:47 2013
+Native configuration is i686-pc-linux-gnu
+
+		===  tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/ArrayNew.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/New.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/SimpleVirtual.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/StaticConstructor.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/StaticDestructor.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/CXX/Trivial.cpp
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Coverage/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Coverage/ReadArgs.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Coverage/ReplayOutDir.c
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Dogfood/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Dogfood/ImmutableSet.cpp
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Lexer/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Lexer/Numbers.pc
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/Concat64.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/ConstantFolding.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/Exprs.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/MultiByteReads.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/Simplify.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Parser/TypeChecking.pc
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Evaluate.pc
+XFAIL: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/Evaluate2.pc
+Failed with exit(1) at line 2
+while running: grep "Query 0:	VALID" Evaluate2.pc.tmp.log
+child process exited abnormally
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Expr/print-smt.pc
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Alias.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/AliasFunction.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/AliasFunctionExit.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/AsmAddresses.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/BitcastAlias.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/ByteSwap.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/CallToUndefinedExternal.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/CheckMemoryAccess.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/ConstantStruct.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/CopyOnWrite.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/DanglingConcreteReadExpr.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/DefineFixedObject.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/DoubleFree.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/DumpStatesOnHalt.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Envp.c
+FAIL: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/ExprLogging.c
+Failed with exit(1) at line 9
+while running: grep "^; Query" klee-last/all-queries.smt2 | wc -l | grep -q 17
+child process exited abnormally
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/ExternalWeakLinkage.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Float.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/FloatingPt.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/FunctionPointer.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/GetElementPtr.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/GetValue.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/InAndOutOfBounds.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/IndirectCallToBuiltin.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/IndirectCallToExternal.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/InsertExtractValue.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/IsSymbolic.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/KleeReportError.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/LargeReturnTypes.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/LongDouble.cpp
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/LongDoubleSupport.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/LowerSwitch.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MakeConcreteSymbolic.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MakeSymbolicName.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MemoryLimit.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MultipleFreeResolution.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MultipleReadResolution.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MultipleReallocResolution.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/MultipleWriteResolution.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/NamedSeedMatching.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/OneFreeError.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/OneOutOfBounds.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Optimize.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Overflow.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/OverlappedError.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/PreferCex.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/RaiseAsm.c
+FAIL: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Realloc.c
+Failed with signal(SIGABRT) at line 2
+while running: klee --exit-on-error Realloc.c.tmp1.bc
+KLEE: output directory = "klee-out-126"
+KLEE: WARNING ONCE: Large alloc: 1073741824 bytes.  KLEE may run out of memory.
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+0  klee 0x08a5a8e8
+
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/ReplayPath.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Searchers.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/SetForking.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/SolverTimeout.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/Vararg.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/WithLibc.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/WriteCov.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Feature/const_array_opt1.c
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Programs/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Programs/pcregrep.c
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/DirConsistency.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/DirSeek.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/FDNumbers.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/FD_Fail.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/FD_Fail2.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Fcntl.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/FilePerm.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/FreeArgv.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Getenv.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Ioctl.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Isatty.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/PrgName.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Read1.c
+XFAIL: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c
+Failed with exit(1) at line 1
+while running: /home/qingjinlyc/IDEs/llvm-gcc-4.2-2.9-i686-linux/bin/llvm-gcc -I/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/include -emit-llvm /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c -emit-llvm -O0 -c -o SELinux.c.tmp1.bc
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:6:29: error: selinux/selinux.h: No such file or directory
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c: In function ‘main’:
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:12: error: ‘security_context_t’ undeclared (first use in this function)
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:12: error: (Each undeclared identifier is reported only once
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:12: error: for each function it appears in.)
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:12: error: expected ‘;’ before ‘con’
+/home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SELinux.c:23: error: ‘con’ undeclared (first use in this function)
+
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/SeedAndFail.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Stdin.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Write1.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/POSIX/Write2.c
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/Uclibc/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/Uclibc/2007-10-08-optimization-calls-wrong-libc-functions.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/Uclibc/2008-03-04-libc-atexit-uses-dso-handle.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Runtime/Uclibc/Environ.c
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Solver/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Solver/FastCexSolver.pc
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/Solver/LargeIntegers.pc
+Running /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/dg.exp ...
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-07-25-invalid-stp-array-binding-to-objectstate.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-07-30-unflushed-byte.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-01-bool-zext-in-call.ll
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-01-cache-unclear-on-overwrite-flushed.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-06-64bit-shift.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-06-access-after-free.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-08-free-zero.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-16-invalid-constant-value.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-08-16-valid-write-to-freed-object.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-10-11-free-of-alloca.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-10-11-illegal-access-after-free-and-branch.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2007-10-12-failed-make-symbolic-after-copy.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2008-03-04-free-of-global.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2008-03-11-free-of-malloc-zero.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2008-04-10-bad-alloca-free.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2008-05-23-gep-with-global-const.c
+PASS: /home/qingjinlyc/Directed_BO_Detection/guided-symbolic-execution/validate_buffer_overflow/klee/test/regression/2012-05-13-asm-causes-aborts.c
+
+		===  Summary ===
+
+# of expected passes		112
+# of unexpected failures	2
+# of expected failures		2

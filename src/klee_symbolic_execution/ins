@@ -1,0 +1,3 @@
+# !/bin/sh
+#./configure --with-llvm=/home/$(whoami)/work/llvm-2.9 --with-stp=/home/$(whoami)/work/stp_install --with-uclibc=/home/$(whoami)/work/klee-uclibc --enable-posix-runtime
+make -j $(grep -c processor /proc/cpuinfo) ENABLE_OPTIMIZED=1
