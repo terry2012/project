@@ -1,0 +1,5 @@
+# !/bin/sh
+sourceanalyzer -b staticresult -clean
+sourceanalyzer -b staticresult touchless make
+sourceanalyzer -b staticresult -scan -f staticresult.fpr
+auditworkbench staticresult.fpr
