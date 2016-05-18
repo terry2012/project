@@ -71,8 +71,8 @@ of another program is fundamentally undecided.</p>
 
 <p>We implemented BovInspector on <a href="http://klee.github.io/">KLEE</a>, a state-of-the-art symbolic execution engine built on top of the <a href="http://llvm.org/">LLVM compiler
 infrastructure</a>. We extended functions of klee from two directions: guided symbolic execution and buffer overflow validation.The static buffer overflow detector used in our experiments is HP Fortify version 3.2.
-We used <a href="https://github.com/BovInspectorTool/project/master/bin/fvdlParser.rar">fvdlParser</a> to convert the results of Fortify into static buffer overflow warning.
-We uesd <a href="https://github.com/BovInspectorTool/project/master/bin/buildCFG.rar">buildCFG.so</a> which is complied by LLVM pass to build CFG ,analyse reachablity in the graph and get warning path set.
+We used <a href="https://github.com/BovInspectorTool/project/blob/master/bin/fvdlParser.rar">fvdlParser</a> to convert the results of Fortify into static buffer overflow warning.
+We uesd <a href="https://github.com/BovInspectorTool/project/blob/master/bin/buildCFG.rar">buildCFG.so</a> which is complied by LLVM pass to build CFG ,analyse reachablity in the graph and get warning path set.
 We modified source code of klee to inspect buffer overflow warnings.With the position of buffer overflow in the 
 source code, we used <a href="https://github.com/BovInspectorTool/project/blob/master/src/repair_buffer_overflow/repair.py">repair.py</a> to repair the vulnerability.You can download the source code from <a href="https://github.com/BovInspectorTool/project">here</a>.</p>
 
@@ -94,7 +94,7 @@ technique.</p>
 <a id="case" class="anchor" href="#case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
 <a id="case" href="#support-or-contact"></a>Case</h3>
 
-<p>You may download testcase via the <a href="https://github.com/BovInspectorTool/project/master/testcases/testcases.rar">download page</a>.</p>
+<p>You may download testcase via the <a href="https://github.com/BovInspectorTool/project/blob/master/testcases/testcases.rar">download page</a>.</p>
       
 
 <h3>
