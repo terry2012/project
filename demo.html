@@ -73,27 +73,38 @@ buildCFG.so is a shared object complied by LLVM pass we relized and we use it to
 
 We use opt to dynamic load shared object buildCFG.so and following command to generate GuideSrc.txt.<br>
 
-<code> &nbsp opt –load ./buildCFG.so –buildCFG –targetList=./checklist_bufferoverflow \<xx.bc\>/dev/null </code><br>
+<code> &nbsp opt –load ./buildCFG.so –buildCFG –targetList=./checklist_bufferoverflow &lt;xx.bc&gt;/dev/null </code><br>
 
-GuideSrc.txt is consist of several warning paths.A warning path is consist of branches from entry to the position in where may occur buffer  in the testcase.In this sample,the GuideSrc.txt is:<br>
-
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">src.c 11</span>
-<span>src.c 18</span></code></pre></div>
-During the process of symbolic execution,  GuideSrc.txt will be readed in and the path set in the text will be validated.
+GuideSrc.txt consists of several warning path set. Each warning path set consists of a set of path segments from program's entry
+to the buffer overflow warning point. In this sample, the GuideSrc.txt includes the following segments:<br>
+<div class="highlight"><pre><code class="language-c" data-lang="c">
+<span class="k">Info:</span>
+<span class="k">gzip.c	1695</span>
+<span class="k">gzip.c	1686</span>
+<span class="k">gzip.c	1684</span>
+<span class="k">gzip.c	1679</span>
+<span class="k">gzip.c	712</span>
+<span class="k">gzip.c	1639</span>
+<span class="k">...</span>
+</code></pre></div>
+More information can be fetched from  <a  href="https://github.com/BovInspectorTool/project/blob/master/testcases/gzip-1.2.4/GuideSrc.txt">GuideSrc.txt</a>
+During the process of symbolic execution,  GuideSrc.txt will be read in and the path set in the text will be validated.
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run klee</h3>
 
 To run KLEE on the bitcode file simply execute:<br>
 
-<code>  &nbsp  klee src.bc</code><br>
-To use klee to target guided execute and inspect buffer overflow,you may run klee with command line option --guided-execution and additional input file GuideSrc.txt which should be copyed the to directory where the source file is.<br>
-<code> &nbsp klee --guided-execution src.bc</code><br>
-There are four paths through our simple function.Klee only execute two of them in static warning.BovInspector report line 11 is false warning and line 18 is true warning in report_NOTBFO.txt and  report_BFO.txt.
+<code>  &nbsp  klee xx.bc</code><br>
+To use klee to perform guided symbolic execution and buffer overflow validation, you need to run klee with command line option --guided-execution and additional input file GuideSrc.txt which should be copyed the to directory where the source file is.<br>
+<code> &nbsp klee --libc=uclibc --posix-runtime --guided-execution ./gzip.bc --sym-args 1 3 1025 --sym-files 2 2</code><br>
+ BovInspector reports line 1009 is a true warning and saves the results in file report_BFO.txt. And false warnings will be saved in report_NOTBFO.txt.
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Repair</h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
+  <span aria-hidden="true" class="octicon octicon-link"></span></a>Targeted Automatic Repair</h3>
 
-<p>Use python repair.py to repair the vulnerabilities that have been validated. Specially, when we need to repair sprintf buffer overflow, we need copy these two files MY_vsnprintf.h and MY_vsnprintf.c to the directory where the repaired source file is. This is because we need to compute the format length to compare with the size of destination buffer.</p>
+<p>Use python repair.py to repair the vulnerabilities that have been validated. 
+Specially, when we need to repair sprintf buffer overflow, we need copy these two files MY_vsnprintf.h and MY_vsnprintf.c to the directory where the repaired source file is. This is because we need to compute the format length to compare with the size of destination buffer.</p>
       </section>
     </div>
 
