@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Demo : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title></title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/BovInspector/demo">View on YouTube</a>
+
+          <h1 id="project_title">Tutorial</h1>
+          <h2 id="project_tagline"></h2>
+<!--
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/BovInspector/demo/master/buildCFG.so">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/BovInspector/demo/tarball/master">Download this project as a tar.gz file</a>
+            </section>-->
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="sample" class="anchor" href="#sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Case</h3>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">1. #include &lt stdio.h &gt </span>
+<span class="k">2. #include &lt string.h &gt </span>
+<span class="k">3. </span>
+<span class="k">4. char buf[2];</span>
+<span class="kt">5. int</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">6. char* src = "yes";</span>
+<span class="k">7.</span>
+<span class="k">8. if</span> <span class="p">(</span><span class="n">src[0]</span> <span class="o">==</span> <span class="mi">'y'</span><span class="p">)</span>
+<span class="k">9.  printf("recieved!\n");</span>
+<span class="k">10. else{</span>
+<span class="k">11.  strcpy(buf, src);</span>
+<span class="k">12.  printf("%s\n", buf);</span>
+<span class="k">13. }</span>
+<span class="k">14. </span>  
+<span class="k">15. src = "nooooo";</span>
+<span class="k">16. </span>
+<span class="k">17. if(src[0] == 'n'){</span> 
+<span class="k">18.   strcpy(buf, src);</span> 
+<span class="k">19.   printf("%s\n", buf);</span>
+<span class="k">20. }</span> 
+<span class="k">21. else</span>
+<span class="k">22.   return 0;</span> 
+<span class="p">23. }</span></code></pre></div>
+<h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extract the results of Fortify</h3>
+<p>Extract the results of Fortify.Use <code>./fvdlParser audit.fvdl</code> to get static buffer overflow warnings. We save these warnings in the file checklist_bufferoverflow.In this sample ,checklist_bufferoverflow is:</p>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">0</span>
+<span class="k">src.c	4  DEF</span>
+<span class="k">src.c	11  BOF</span>
+<span class="k">END_PATH</span>
+<span class="k">1</span>
+<span class="k">src.c	4  DEF</span>
+<span class="k">src.c	18  BOF</span>
+<span class="k">END_PATH</span></code></pre></div>
+<p>There are two static buffer overflow warnings in the sample.DEF is the statement label that
+a buffer is first declared or the entry of program. BOF is he statement label that overflow occurs on the buffer.</p>
+<h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compile testcase to LLVM bitcode</h3>
+
+ KLEE is built on top of LLVM. The first steps are to get a working LLVM installation.You may install llvm-gcc and build LLVM 2.9.To run a program with KLEE, you first compile it to LLVM bitcode using llvm-gcc to generate the LLVM bitcode file src.bc.You may run:<br>
+<code>   &nbsp llvm-gcc --emit-llvm -c -g src.c</code>
+<h3>
+<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generate warning paths</h3>
+
+<p>Pass framework is a very important part of the LLVM system.Each pass is used to do optimization and conversion work in LLVM.buildCFG.so is a shared object complied by LLVM pass we relized and we use it to build CFG ,analyse reachablity in the graph and get warning path set.
+
+We use opt to dynamic load shared object buildCFG.so and following command to generate GuideSrc.txt.<br>
+
+<code> &nbsp opt –load ./buildCFG.so –buildCFG 
+–targetList=./checklist_bufferoverflow /dev/null </code><br>
+
+GuideSrc.txt is consist of several warning paths.A warning path is consist of branches from entry to the position in where may occur buffer  in the testcase.In this sample,the GuideSrc.txt is:<br>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">src.c 11</span>
+<span>src.c 18</span></code></pre></div>
+During the process of symbolic execution,  GuideSrc.txt will be readed in and the path set in the text will be validated.
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run klee</h3>
+
+To run KLEE on the bitcode file simply execute:<br>
+
+<code>  &nbsp  klee src.bc</code><br>
+To use klee to target guided execute and inspect buffer overflow,you may run klee with command line option --guided-execution and additional input file GuideSrc.txt which should be copyed the to directory where the source file is.<br>
+<code> &nbsp klee --guided-execution src.bc</code><br>
+There are four paths through our simple function.Klee only execute two of them in static warning.BovInspector report line 11 is false warning and line 18 is true warning in report_NOTBFO.txt and  report_BFO.txt.
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Repair</h3>
+
+<p>Use python repair.py to repair the vulnerabilities that have been validated. Specially, when we need to repair sprintf buffer overflow, we need copy these two files MY_vsnprintf.h and MY_vsnprintf.c to the directory where the repaired source file is. This is because we need to compute the format length to compare with the size of destination buffer.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Demo maintained by <a href="https://github.com/BovInspector">BovInspector</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
