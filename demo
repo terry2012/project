@@ -33,7 +33,24 @@
       <section id="main_content" class="inner">
         <h3>
 <a id="sample" class="anchor" href="#sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Case</h3>
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">1. #include &lt stdio.h &gt </span>
+<div class="highlight"><pre><code class="language-c" data-lang="c">
+<span class="k">233char ifname[MAX_PATH_LEN];
+<span class="k">997local int get_istat(iname, sbuf)
+<span class="k">998    char *iname;
+<span class="k">999    struct stat *sbuf;
+<span class="k">1000{
+<span class="k">1001    int ilen;
+<span class="k">1002	static char *suffixes[] = {z_suffix, ".gz", ".z", "-z", ".Z", NULL};
+<span class="k">1003   char **suf = suffixes;
+<span class="k">1004	char *s;
+<span class="k">1005    #ifdef NO_MULTIPLE_DOTS
+<span class="k">1006    char *dot;
+<span class="k">1007    #endif
+
+<span class="k">1009    strcpy(ifname, iname);
+<span class="k">    ...
+<span class="k">}
+<span class="k">1. #include &lt stdio.h &gt </span>
 <span class="k">2. #include &lt string.h &gt </span>
 <span class="k">3. </span>
 <span class="k">4. char buf[2];</span>
