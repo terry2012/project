@@ -69,7 +69,7 @@ a buffer is first declared or the entry of program. BOF is he statement label th
  <a  href="https://github.com/BovInspectorTool/project/blob/master/testcases/UsefulComands.rar">UsefulComands</a>
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true">
-  <span aria-hidden="true" class="octicon octicon-link"></span></a>Warning Reachability Analysis</h3>
+  <span aria-hidden="true" class="octicon octicon-link"></span></a>Perform Warning Reachability Analysis</h3>
 
 <p>Pass framework is a very important part of the LLVM system. Each pass is used to do optimization and conversion work in LLVM. 
 buildCFG.so is a shared object complied by LLVM pass we relized and we use it to build CFG, analyse reachablity in the graph and get warning path set.
@@ -94,18 +94,26 @@ More information can be fetched from  <a  href="https://github.com/BovInspectorT
 During the process of symbolic execution,  GuideSrc.txt will be read in and the path set in the text will be validated.
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
-  <span aria-hidden="true" class="octicon octicon-link"></span></a>Guided Symbolic Execution and Buffer Overflow Validation</h3>
+  <span aria-hidden="true" class="octicon octicon-link"></span></a>Perform Guided Symbolic Execution and Buffer Overflow Validation</h3>
 
 To use klee to perform guided symbolic execution and buffer overflow validation, you need to run klee with command line option --guided-execution and additional input file GuideSrc.txt which should be copyed the to directory where the source file is.<br>
 <code> &nbsp klee --libc=uclibc --posix-runtime --guided-execution ./gzip.bc --sym-args 1 3 1025 --sym-files 2 2</code><br>
  BovInspector reports line 1009 is a true warning and saves the results in file report_BFO.txt. And false warnings will be saved in report_NOTBFO.txt.
+gzip.c_1009 strcpy
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
-  <span aria-hidden="true" class="octicon octicon-link"></span></a>Targeted Automatic Repair</h3>
+  <span aria-hidden="true" class="octicon octicon-link"></span></a>Perform Targeted Automatic Repair</h3>
 
 <p>Use python repair.py to repair the vulnerabilities that have been validated. 
-
+python repair.py 
+if(strlen(iname) >= sizeof(ifname)){
+	printf("strcpy may have a buffer overflow, we just exit\n");
+	return 0;
+}
+strcpy(ifname, iname);
+python repair.py --mode=API-REP
+strncpy(ifname,iname,sizeof(ifname));
 </section>
     </div>
 
