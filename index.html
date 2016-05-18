@@ -11,7 +11,7 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Project</h1>
+      <h1 class="project-name">BovInspector</h1>
       <h2 class="project-tagline">BovInspector is an automatic buffer overflow inspection and repair tool for C programs. It&#39;s built on Ubuntu, relies on LLVM, KLEE and Fortify. BovInspector consists of four main components: warning reachability analysis, guided symbolic execution,  buffer overflow validation, and targeted automatic repair. After BovInspector’s execution, it outputs validated buffer overflow report and repaired source code.</h2>
       <a href="https://github.com/BovInspectorTool/project" class="btn">View on GitHub</a>
       <a href="https://github.com/BovInspectorTool/project/zipball/master" class="btn">Download .zip</a>
@@ -19,34 +19,40 @@
     </section>
 
     <section class="main-content">
-      <p>&lt;!DOCTYPE html&gt;
-</p>
-
-<p></p>
-    
-    
-    
-
-<p></p>
-
-<p></p>
 
 <p><a id="introduction" href="#welcome-to-github-pages"></a>Introduction</p>
 
-<p>Buffer overflow is one of the most common type of software vulnerabilities. Various static analysis and dynamic testing techniques have been proposed to detect buffer overflow vulnerabilities. With automatic tool support, static buffer overflow detection technique has been widely used in academia and industry. However, it tends to report too many false positives fundamentally due to the lack of software execution information. Currently, static warnings can only be validated by manual inspection, which significantly limits the practicality of the static analysis. In this paper, we present BovInspector, a tool framework for automatic static buffer overflow warnings inspection and valid bugs repair. Given the program source code and static buffer overflow vulnerability warnings, BovInspector first performs warning reachability analysis. Then, BovInspector executes the source code symbolically under the guidance of reachable warnings. Each reachable warning is validated and classified by checking whether all the path conditions and the buffer overflow constraints can be satisfied simultaneously. For each validated true warning, BovInspector fix it by adding boundary checking or replacing unsafe APIs by safe ones. BovInspector is complementary to prior static buffer overflow discovery schemes. Experimental results on real open source programs show that BovInspector can automatically inspect 74.9\% of total warnings in average, and identify from 25\% to 100\% of the false warnings with an average of 59.9\%. And a short video for demonstrating the capabilities of BovInspector is now available at https://youtu.be/bAgZ4b5AWR8.</p>
+<p>Buffer overflow is one of the most common type of software vulnerabilities. 
+Various static analysis and dynamic testing techniques have been proposed to detect buffer overflow vulnerabilities.
+With automatic tool support, static buffer overflow detection technique has been widely used in academia and industry. 
+However, it tends to report too many false positives fundamentally due to the lack of software execution information. 
+Currently, static warnings can only be validated by manual inspection, which significantly limits the practicality of the 
+static analysis. In this paper, we present BovInspector, a tool framework for automatic static buffer overflow warnings 
+inspection and valid bugs repair. Given the program source code and static buffer overflow vulnerability warnings, 
+BovInspector first performs warning reachability analysis. Then, BovInspector executes the source code symbolically 
+under the guidance of reachable warnings. Each reachable warning is validated and classified by checking whether 
+all the path conditions and the buffer overflow constraints can be satisfied simultaneously. For each validated true warning, 
+BovInspector fix it by adding boundary checking or replacing unsafe APIs by safe ones. BovInspector is complementary to prior 
+static buffer overflow discovery schemes. Experimental results on real open source programs show that BovInspector can automatically 
+inspect 74.9% of total warnings in average, and identify from 25% to 100% of the false warnings with an average of 59.9%. 
+And a short video for demonstrating the capabilities of BovInspector is now available at 
+<a href="https://youtu.be/bAgZ4b5AWR8">Demo Video on YouTube</a>. And the test case used in the video and its corresponding inspection
+and repair steps and results are availble at 
+<a id="tutorial" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+<a href="https://github.com/BovInspectorTool/project/blob/gh-pages/demo">Demo</a>. </p>
 
 <h3>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
 <a id="designer-templates" href="#designer-templates"></a>Overview</h3>
 
-<p><img src="https://raw.githubusercontent.com/BovInspectorTool/project/gh-pages/images/arc.png" alt="overview" width="250" height="355"></p>
+<p><img src="https://raw.githubusercontent.com/BovInspectorTool/project/gh-pages/images/arc.png" alt="Method Flow Chart"></p>
 
 <p>BovInspector has
 two inputs, the static buffer overflow vulnerability warnings
 and the source code, and three outputs, true warnings, false
 warnings, and undecided warnings. True warnings are those
-that there exists at least one test case that triggers buffer over-
-flow. For each true warning, BovInspector also outputs such a
+that there exists at least one test case that triggers buffer overflow. 
+For each true warning, BovInspector also outputs such a
 test case. In addition, BovInspector can automatically repair
 the vulnerabilities for validated true warnings by checking
 array boundaries or replacing unsafe API by safe ones. False
@@ -69,10 +75,11 @@ of another program is fundamentally undecided.</p>
 <p>We implemented BovInspector on <a href="http://klee.github.io/">KLEE</a>, a state-of-the-art symbolic execution engine built on top of the <a href="http://llvm.org/">LLVM compiler
 infrastructure</a>. We extended functions of klee from two directions: guided symbolic execution and buffer overflow validation.The static buffer overflow detector used in our experiments is HP Fortify version 3.2.
 We used <a href="https://github.com/BovInspectorTool/project/blob/master/bin/fvdlParser.rar">fvdlParser</a> to convert the results of Fortify into static buffer overflow warning.
-We uesd <a href="https://github.com/BovInspectorTool/project/blob/master/bin/buildCFG.rar">buildCFG.so</a> which is complied by LLVM pass to build CFG ,analyse reachablity in the graph and get warning path set.
+We uesd <a href="https://github.com/BovInspectorTool/project/blob/master/bin/buildCFG.so.rar">buildCFG.so</a> which is complied by LLVM pass to build CFG ,analyse reachablity in the graph and get warning path set.
 We modified source code of klee to inspect buffer overflow warnings.With the position of buffer overflow in the 
-source code, we used <a href="https://github.com/BovInspectorTool/project/blob/master/src/repair%20buffer%20overflow/repair.py">repair.py</a> to repair the vulnerability.You can download the source code from <a href="https://github.com/BovInspectorTool/project">here</a>.</p>
+source code, we used <a href="https://github.com/BovInspectorTool/project/blob/master/src/repair_buffer_overflow/repair.py">repair.py</a> to repair the vulnerability.You can download the source code from <a href="https://github.com/BovInspectorTool/project">here</a>.</p>
 
+<p><img src="https://raw.githubusercontent.com/BovInspectorTool/project/gh-pages/images/tool.png" alt="BovInspector Tool Architecture"></p>
 <h3>
 <a id="experiment" class="anchor" href="#experiment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
 <a id="authors-and-contributors" href="#authors-and-contributors"></a>Experiment</h3>
@@ -90,14 +97,14 @@ technique.</p>
 <a id="case" class="anchor" href="#case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
 <a id="case" href="#support-or-contact"></a>Case</h3>
 
-<p>You may download testcase via the <a href="https://github.com/BovInspectorTool/project/blob/master/testcases/testcases.rar">download page</a>.</p>
+<p>You may download the test cases tested in our paper via the <a href="https://github.com/BovInspectorTool/project/tree/master/testcases">download page</a>.</p>
       
-
 <h3>
 <a id="tutorial" class="anchor" href="#tutorial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
 <a id="tutorial" href="#support-or-contact"></a>Tutorial</h3>
 
-<p>You can see turotial <a href="http://bovinspectortool.github.io/project/tutorial.html">here</a>.</p>
+<p>You can see turotial <a href="https://github.com/BovInspectorTool/project/blob/gh-pages/Tutorial">here</a>.</p>
+
 
 <p>
 </p>
@@ -109,6 +116,7 @@ technique.</p>
       </footer>
 
     </section>
+
   
   </body>
 </html>
