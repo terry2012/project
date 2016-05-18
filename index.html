@@ -36,7 +36,7 @@ BovInspector fix it by adding boundary checking or replacing unsafe APIs by safe
 static buffer overflow discovery schemes. Experimental results on real open source programs show that BovInspector can automatically 
 inspect 74.9% of total warnings in average, and identify from 25% to 100% of the false warnings with an average of 59.9%. 
 And a short video for demonstrating the capabilities of BovInspector is now available at 
-<a href="https://youtu.be/bAgZ4b5AWR8">Introduction Vidio on YouTube</a>.</p>
+<a href="https://youtu.be/bAgZ4b5AWR8">Introduction Video on YouTube</a>.</p>
 
 <h3>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
@@ -48,8 +48,8 @@ And a short video for demonstrating the capabilities of BovInspector is now avai
 two inputs, the static buffer overflow vulnerability warnings
 and the source code, and three outputs, true warnings, false
 warnings, and undecided warnings. True warnings are those
-that there exists at least one test case that triggers buffer over-
-flow. For each true warning, BovInspector also outputs such a
+that there exists at least one test case that triggers buffer overflow. 
+For each true warning, BovInspector also outputs such a
 test case. In addition, BovInspector can automatically repair
 the vulnerabilities for validated true warnings by checking
 array boundaries or replacing unsafe API by safe ones. False
@@ -74,7 +74,7 @@ infrastructure</a>. We extended functions of klee from two directions: guided sy
 We used <a href="https://github.com/BovInspectorTool/project/master/bin/fvdlParser.rar">fvdlParser</a> to convert the results of Fortify into static buffer overflow warning.
 We uesd <a href="https://github.com/BovInspectorTool/project/master/bin/buildCFG.rar">buildCFG.so</a> which is complied by LLVM pass to build CFG ,analyse reachablity in the graph and get warning path set.
 We modified source code of klee to inspect buffer overflow warnings.With the position of buffer overflow in the 
-source code, we used <a href="https://github.com/BovInspectorTool/project/master/src/repair_buffer_overflow/repair.py">repair.py</a> to repair the vulnerability.You can download the source code from <a href="https://github.com/BovInspectorTool/project">here</a>.</p>
+source code, we used <a href="project/src/repair_buffer_overflow/repair.py">repair.py</a> to repair the vulnerability.You can download the source code from <a href="https://github.com/BovInspectorTool/project">here</a>.</p>
 
 <p><img src="https://raw.githubusercontent.com/BovInspectorTool/project/gh-pages/images/tool.png" alt="BovInspector Tool Architecture"></p>
 <h3>
