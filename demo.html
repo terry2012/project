@@ -117,8 +117,7 @@ To use klee to perform guided symbolic execution and buffer overflow validation,
 <br>
 Repair Mode: add boundary checks
 <br>
-Command:
-<br>
+Command: 
 <code>python repair.py</code>
 <div class="highlight"><pre><code class="language-c" data-lang="c">
 <span class="k">1009  if(strlen(iname) >= sizeof(ifname)){
@@ -130,8 +129,7 @@ Command:
 <br>
 Repair Mode: API-Replacement
 <br>
-Command:
-<br>
+Command: 
 <code>python repair.py --mode=API-REP</code>
 <div class="highlight"><pre><code class="language-c" data-lang="c">
 <span class="k">1009  strncpy(ifname,iname,sizeof(ifname));
