@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Project by BovInspectorTool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">BovInspector Experiment Results</h1>
+    </section>
+
+    <section class="main-content">
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+
+<title>
+  
+    Building KLEE &middot; KLEE
+  
+</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+<link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-precomposed.png">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+<!-- Page styles -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/pygments/default.css">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,600,700,900" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <!-- master nav -->
+    <header class="app-bar promote-layer">
+  <div class="app-bar-container">
+    <button class="menu"><img src="/images/hamburger.svg" alt="Menu"></button>
+    <h1 class="logo">
+      <a href="/">
+        <img alt="KLEE" src="/images/klee.svg">
+      </a>
+    </h1>
+    <section class="app-bar-actions">
+    <!-- Put App Bar Buttons Here -->
+    <!-- e.g <button><i class="icon icon-star"></i></button> -->
+    </section>
+  </div>
+</header>
+
+<nav class="navdrawer-container promote-layer" role="navigation">
+  <h4>Navigation</h3>
+  <ul>
+    <li>
+      <a href="/getting-started">Getting Started</a>
+    </li>
+    <li>
+      <a href="/docs">Documentation</a>
+    </li>
+    <li>
+      <a href="/tutorials">Tutorials</a>
+    </li>
+    <li>
+      <a href="/publications">Publications</a>
+    </li>
+    <li>
+      <a href="/projects">Projects</a>
+    </li>
+    <li>
+      <a href="/getting-involved">Getting Involved</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <!-- page layout -->
+    <main>
+      <div class="editorial-header">
+        <h1 class="tag editorial-header__title">Building KLEE</h1>
+        <h2 class="editorial-header__subtitle">with LLVM 2.9</h2>
+        <p class="editorial-header__excerpt g-wide--pull-1"></p>
+      </div>
+
+      <p>The current procedure for building KLEE with LLVM 2.9 is outlined below.
+If you want to build KLEE with LLVM 3.4 (recommended), <a href="/build-llvm34">click here</a>.</p>
+
+<ol>
+  <li>
+    <p><strong>Install dependencies:</strong> KLEE requires all the dependencies of LLVM, which are discussed <a href="http://llvm.org/docs/GettingStarted.html#requirements">here</a>. In particular, you should have the following packages (the list is likely not complete): g++, curl, dejagnu, subversion, bison, flex, bc, libcap-dev(el):</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install g++ python curl cmake git bison flex bc libcap-dev <span class="c"># Ubuntu</span>
+<span class="gp">$ </span>sudo dnf install g++ python curl cmake git bison flex bc libcap-devel <span class="c"># Fedora 21+</span>
+</code></pre>
+    </div>
+
+    <p>On some architectures, you might also need to set the following environment variables (best to put them in a config file like <strong>.bashrc</strong>):</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/usr/include/x86_64-linux-gnu  
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span>/usr/include/x86_64-linux-gnu
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Build LLVM 2.9:</strong> KLEE is built on top of <a href="http://llvm.org">LLVM</a>; the first steps are to get a working LLVM installation. See <a href="http://llvm.org/docs/GettingStarted.html">Getting Started with the LLVM System</a> for more information.</p>
+
+    <p><strong>NOTE:</strong> The only LLVM version currently supported by KLEE is <strong>LLVM 2.9</strong>. KLEE is currently tested on <strong>Linux x86-64</strong>, and might break on x86-32. KLEE will <strong>not</strong> compile with LLVM versions prior to 2.9, and there is only experimental support for LLVM 3.4.</p>
+
+    <ol>
+      <li>Install llvm-gcc:
+        <ul>
+          <li>Download and install the LLVM 2.9 release of llvm-gcc from  <a href="http://llvm.org/releases/download.html#2.9">here</a>. On an x86-64 Linux platform you are going to need the archive  <a href="http://llvm.org/releases/2.9/llvm-gcc4.2-2.9-x86_64-linux.tar.bz2">LLVM-GCC 4.2 Front End Binaries for Linux x86-64</a>.</li>
+          <li>Add llvm-gcc to your PATH. It is important to do this first so that llvm-gcc is found in subsequent configure steps. llvm-gcc will be used later to compile programs that KLEE can execute. <em>Forgetting to add llvm-gcc to your PATH at this point is by far the most common source of build errors reported by new users.</em></li>
+        </ul>
+      </li>
+      <li>
+        <p>Download and build <a href="http://llvm.org/releases/2.9/llvm-2.9.tgz">LLVM 2.9</a>:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>tar zxvf llvm-2.9.tgz  
+<span class="gp">$ </span><span class="nb">cd </span>llvm-2.9  
+<span class="gp">$ </span>./configure --enable-optimized --enable-assertions  
+<span class="gp">$ </span>make
+</code></pre>
+        </div>
+        <p>The <code class="highlighter-rouge">--enable-optimized</code> configure argument is not necessary, but KLEE runs very slowly in Debug mode.
+<em>You may run into compilation issues if you use new kernels/glibc versions. Please see <a href="http://www.mail-archive.com/klee-dev@imperial.ac.uk/msg01302.html">this mailing list post</a> for details on how to fix this issue.</em></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Build STP:</strong> The default version of KLEE uses the STP constraint solver. We recommend downloading the current stable version at <a href="https://github.com/stp/stp/archive/2.1.0.tar.gz">this link</a>, which we have tested and used successfully. More recent versions can be accessed from the <a href="http://stp.github.io/stp/">STP website</a> if you prefer. <em>Please let us know if you have successfully and extensively used KLEE with a more recent version of STP.</em></p>
+
+    <p><strong>NOTE:</strong> The SAT solver minisat needs to be build separately with recent versions of STP.</p>
+
+    <ol>
+      <li>
+        <p>Install minisat:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone https://github.com/stp/minisat.git
+<span class="gp">$ </span><span class="nb">cd </span>minisat
+<span class="gp">$ </span>mkdir build
+<span class="gp">$ </span><span class="nb">cd </span>build
+<span class="gp">$ </span>cmake ../
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Install STP:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>tar xzfv 2.1.0.tar.gz  
+<span class="gp">$ </span><span class="nb">cd </span>stp-2.1.0
+<span class="gp">$ </span>mkdir build
+<span class="gp">$ </span><span class="nb">cd </span>build
+<span class="gp">$ </span>cmake ..  
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>As documented on the STP website, it is <strong>essential</strong> to run the following command before using STP (and thus KLEE):</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">ulimit</span> -s unlimited
+</code></pre>
+        </div>
+
+        <p>You can make this persistent by updating the <code class="highlighter-rouge">/etc/security/limits.conf</code> file.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>(Optional) <strong>Build uclibc and the POSIX environment model:</strong> By default, KLEE works on closed programs (programs that don’t use any external code such as C library functions). However, if you want to use KLEE to run real programs you will want to enable the KLEE POSIX runtime, which is built on top of the <a href="http://uclibc.org">uClibc</a> C library.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone https://github.com/klee/klee-uclibc.git
+<span class="gp">$ </span><span class="nb">cd </span>klee-uclibc
+<span class="gp">$ </span>./configure --make-llvm-lib
+<span class="gp">$ </span>make -j2
+<span class="gp">$ </span><span class="nb">cd</span> ..
+</code></pre>
+    </div>
+
+    <p><strong>NOTE:</strong> If you are on a different target (i.e., not i386 or x64), you will need to run make config and select the correct target. The defaults for the other uClibc configuration variables should be fine.</p>
+  </li>
+  <li>
+    <p><strong>Download KLEE:</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone https://github.com/klee/klee.git
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Configure KLEE:</strong> From the KLEE source directory, run:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>./configure --with-llvm<span class="o">=</span>full-path-to-llvm --with-stp<span class="o">=</span>full-path-to-stp/install --with-uclibc<span class="o">=</span>full-path-to-klee-uclibc --enable-posix-runtime
+</code></pre>
+    </div>
+
+    <p><strong>NOTE:</strong> If you skipped step 4, simply remove the <code class="highlighter-rouge">--with-uclibc</code> and <code class="highlighter-rouge">--enable-posix-runtime</code> options.</p>
+  </li>
+  <li>
+    <p><strong>Build KLEE:</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>make <span class="nv">ENABLE_OPTIMIZED</span><span class="o">=</span>1
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Run the regression suite to verify your build:</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>make check  
+<span class="gp">$ </span>make unittests  
+</code></pre>
+    </div>
+
+    <p><strong>NOTE:</strong> For testing real applications (e.g. Coreutils), you may need to increase your system’s open file limit (ulimit -n). Something between 10000 and 999999 should work. In most cases, the hard limit will have to be increased first, so it is best to directly edit the <code class="highlighter-rouge">/etc/security/limits.conf</code> file.<br /><br /></p>
+  </li>
+  <li>
+    <p><strong>You’re ready to go! Check the <a href="/tutorials">Tutorials</a> page to try KLEE.</strong></p>
+  </li>
+</ol>
+
+    </main>
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Demo maintained by <a href="https://github.com/BovInspector">BovInspector</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
