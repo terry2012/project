@@ -96,7 +96,7 @@ to the buffer overflow warning point. In this sample, the GuideSrc.txt includes 
 <span class="k">gzip.c	1639</span>
 <span class="k">...</span>
 </code></pre></div>
-More information can be fetched from  <a  href="https://github.com/BovInspectorTool/project/blob/master/testcases/gzip-1.2.4/GuideSrc.txt">GuideSrc.txt</a>
+More information can be fetched from  <a  href="https://github.com/BovInspectorTool/project/blob/master/testcases/gzip-1.2.4/GuideSrc.txt">GuideSrc.txt</a>.
 During the process of symbolic execution,  GuideSrc.txt will be read in and the path set in the text will be validated.
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
@@ -137,6 +137,8 @@ Command:
 <div class="highlight"><pre><code class="language-c" data-lang="c">
 1009  strncpy(ifname,iname,sizeof(ifname));
 </code></pre></div>
+<p>After repair, the repaired source code will be rescanned by Fortify. 
+The results show that Fortify reports no buffer overflow on the new line.</p>
 </section>
     </div>
 
