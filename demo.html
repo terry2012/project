@@ -113,26 +113,29 @@ To use klee to perform guided symbolic execution and buffer overflow validation,
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
   <span aria-hidden="true" class="octicon octicon-link"></span></a>Perform Targeted Automatic Repair</h3>
 
-<p>Use python repair.py to repair the vulnerabilities that have been validated.
+<p>Use python repair.py to repair the vulnerabilities that have been validated.</p>
 <br>
 Repair Mode: add boundary checks
 <br>
 Command: 
 <code>python repair.py</code>
+<p>Repair Result：</p><br>
 <div class="highlight"><pre><code class="language-c" data-lang="c">
-<span class="k">1009  if(strlen(iname) >= sizeof(ifname)){
-<span class="k">1010  	printf("strcpy may have a buffer overflow, we just exit\n");
-<span class="k">1011	return 0;
-<span class="k">1012  }
-<span class="k">1013  strcpy(ifname, iname);
+<span class="k">1009  if(strlen(iname) >= sizeof(ifname)){</span>
+<span class="k">1010  	printf("strcpy may have a buffer overflow, we just exit\n");</span>
+<span class="k">1011	return 0;</span>
+<span class="k">1012  }</span>
+<span class="k">1013  strcpy(ifname, iname);</span>
 </code></pre></div>
 <br>
 Repair Mode: API-Replacement
 <br>
 Command: 
 <code>python repair.py --mode=API-REP</code>
+<br>
+<p>Repair Result：</p><br>
 <div class="highlight"><pre><code class="language-c" data-lang="c">
-<span class="k">1009  strncpy(ifname,iname,sizeof(ifname));
+1009  strncpy(ifname,iname,sizeof(ifname));
 </code></pre></div>
 </section>
     </div>
