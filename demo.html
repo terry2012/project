@@ -67,8 +67,11 @@ a buffer is first declared or the entry of program. BOF is he statement label th
  You may run <code>   &nbsp llvm-gcc --emit-llvm -c -g src.c</code>.
  For gzip program, we need to modify the makefile to compile the program with llvm-gcc. The correspongding commands are given in 
  <a  href="https://github.com/BovInspectorTool/project/blob/master/testcases/UsefulComands.rar">UsefulComands</a>
+ <\br>
  Change makefile:
+ <\br>
 <code>  CC = llvm-gcc #for bovinspector</code>
+<\br>
 <code>  LD = llvm-ld  #for bovinspector</code>
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true">
@@ -110,15 +113,29 @@ To use klee to perform guided symbolic execution and buffer overflow validation,
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
   <span aria-hidden="true" class="octicon octicon-link"></span></a>Perform Targeted Automatic Repair</h3>
 
-<p>Use python repair.py to repair the vulnerabilities that have been validated. 
-python repair.py 
-if(strlen(iname) >= sizeof(ifname)){
-	printf("strcpy may have a buffer overflow, we just exit\n");
-	return 0;
-}
-strcpy(ifname, iname);
-python repair.py --mode=API-REP
-strncpy(ifname,iname,sizeof(ifname));
+<p>Use python repair.py to repair the vulnerabilities that have been validated.
+</br>
+Repair Mode: add boundary checks
+</br>
+Command:
+</br>
+<code>python repair.py</code>
+<div class="highlight"><pre><code class="language-c" data-lang="c">
+<span class="k">1009  if(strlen(iname) >= sizeof(ifname)){
+<span class="k">1010  	printf("strcpy may have a buffer overflow, we just exit\n");
+<span class="k">1011	return 0;
+<span class="k">1012  }
+<span class="k">1013  strcpy(ifname, iname);
+</code></pre></div>
+<\br>
+Repair Mode: API-Replacement
+</br>
+Command:
+</br>
+<code>python repair.py --mode=API-REP</code>
+<div class="highlight"><pre><code class="language-c" data-lang="c">
+<span class="k">1009  strncpy(ifname,iname,sizeof(ifname));
+</code></pre></div>
 </section>
     </div>
 
